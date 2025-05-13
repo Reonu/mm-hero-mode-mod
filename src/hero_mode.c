@@ -25,9 +25,9 @@ RECOMP_PATCH s32 Health_ChangeBy(PlayState* play, s16 healthChange) {
         gSaveContext.save.saveInfo.playerData.health = gSaveContext.save.saveInfo.playerData.healthCapacity;
     }
 
-    if (oneHitKo == 0) {
+    if (healthChange < 0 && oneHitKo == 0) {
         gSaveContext.save.saveInfo.playerData.health = 0;
-        return true;
+        return false;
     }
 
     if (gSaveContext.save.saveInfo.playerData.health <= 0) {
