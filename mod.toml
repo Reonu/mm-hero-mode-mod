@@ -8,14 +8,20 @@
 id = "mm_reonu_hero_mode"
 
 # Version of this mod.
-version = "1.0.2"
+version = "1.0.3"
 
 # The name that will show up for this mod in the mod menu. This should be human readable.
 display_name = "Hero Mode"
 
 # The description that will show up when this mod is displayed in the mod menu. This should be human readable.
 description =  """
-Adds a customizable damage multiplier (2x by default) and an option to disable all recovery heart drops (on by default)"""
+Adds the following options: 
+* A customizable damage multiplier (2x by default)
+* An option to disable all recovery heart drops (on by default)
+* An option to disable recovery fairies drops (off by default)
+* An option to lose all rupees on death (off by default)
+
+The default settings mimic the Hero mode in other Zelda games."""
 
 # A short description that will show up in this mod's entry in the mod list. This should be human readable and kept short
 # to prevent it from being cut off due to the limited space.
@@ -65,6 +71,22 @@ description = "Prevent recovery hearts from spawning. Default is yes."
 type = "Enum"
 options = [ "Yes", "No" ]
 default = "Yes"
+
+[[manifest.config_options]]
+id = "disable_fairies"
+name = "Disable Fairies"
+description = "Prevent fairies from spawning. Default is no."
+type = "Enum"
+options = [ "Yes", "No" ]
+default = "No"
+
+[[manifest.config_options]]
+id = "lose_rupees_on_death"
+name = "Lose Rupees on Death"
+description = "If enabled, you will lose all your rupees upon dying. Default is no."
+type = "Enum"
+options = [ "Yes", "No" ]
+default = "No"
 
 [[manifest.config_options]]
 id = "one_hit_ko"

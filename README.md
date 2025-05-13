@@ -3,7 +3,7 @@
 
 By default, this mod sets the damage multiplier to 2x and disables recovery heart drops, just like the Hero Mode in other Zelda games.
 
-However, you can also set a custom damage multiplier or keep the recovery hearts if you wish by entering the mod's config menu. There's even a 1 hit KO option!
+However, you can also set a custom damage multiplier or keep the recovery hearts if you wish by entering the mod's config menu. You can also prevent recovery fairies from spawning. There's even a 1 hit KO option, and an option to lose all rupees upon dying!
 
 ### Writing mods
 See [this document](https://hackmd.io/fMDiGEJ9TBSjomuZZOgzNg) for an explanation of the modding framework, including how to write function patches and perform interop between different mods.
