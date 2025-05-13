@@ -1,8 +1,8 @@
-# Majora's Mask: Recompiled Mod Template
+# Hero Mode for Majora's Mask Recompiled
 
-This is an example mod for Majora's Mask: Recompiled that can be used as a template for creating mods. It has a basic build system, headers, sample code, and a mod config toml.
 
-Example code for using the recompui API to build ingame UI can be found in the `ui-example` branch.
+By default, this mod sets the damage multiplier to 2x and disables recovery heart drops, just like the Hero Mode in other Zelda games.
+However, you can also set a custom damage multiplier or keep the recovery hearts if you wish by entering the mod's config menu. There's even a 1 hit KO option!
 
 ### Writing mods
 See [this document](https://hackmd.io/fMDiGEJ9TBSjomuZZOgzNg) for an explanation of the modding framework, including how to write function patches and perform interop between different mods.
