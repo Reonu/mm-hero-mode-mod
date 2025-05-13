@@ -95,7 +95,8 @@ RECOMP_PATCH s32 Health_ChangeBy(PlayState* play, s16 healthChange) {
 
 u8 gItemIsHeart;
 RECOMP_HOOK("EnItem00_Init") void on_EnItem00_Init(Actor* thisx, PlayState* play) {
-    if (thisx->params == ITEM00_RECOVERY_HEART) {
+    s16 maskedParam = thisx->params & 0xFF;
+    if (maskedParam == ITEM00_RECOVERY_HEART || maskedParam == ITEM00_3_HEARTS) {
         gItemIsHeart = true;
     }
 }
