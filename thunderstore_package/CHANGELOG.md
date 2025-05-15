@@ -1,3 +1,5 @@
+### 1.0.5
+- Fixed softlock when dying to Gekko's slime grab attack. 
 ### 1.0.4
 - Fixed bug causing recovery hearts to spawn sometimes
 ### 1.0.3

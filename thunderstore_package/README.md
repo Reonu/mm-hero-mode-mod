@@ -1,5 +1,5 @@
 # Hero Mode for Majora's Mask Recompiled
-![Mod Menu](https://github.com/user-attachments/assets/d3fca95f-791f-4f14-9624-fb933aff60de)
+![Mod Menu](https://github.com/user-attachments/assets/18df2b3f-be50-44ec-aaf2-cb255264a12f)
 
 By default, this mod sets the damage multiplier to 2x and disables recovery heart drops, just like the Hero Mode in other Zelda games.
 
