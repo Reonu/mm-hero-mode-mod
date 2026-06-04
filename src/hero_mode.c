@@ -52,25 +52,16 @@ typedef struct EnElf {
 
 extern bool Player_InBlockingCsMode(PlayState* play, Player* player);
 extern s32 func_808339D4(PlayState* play, Player* this, s32 damage);
-RECOMP_PATCH s32 Health_ChangeBy(PlayState* play, s16 healthChange) {
+RECOMP_HOOK("Health_ChangeBy") s32 Health_ChangeByHook(PlayState* play, s16 healthChange) {
     s16 damageMultiplier = (s16)recomp_get_config_u32("damage_multiplier");
-    u8 oneHitKo = recomp_get_config_u32("one_hit_ko");
-    u8 loseRupees = recomp_get_config_u32("lose_rupees_on_death");
+    u32 oneHitKo = recomp_get_config_u32("one_hit_ko");
+    u32 loseRupees = recomp_get_config_u32("lose_rupees");
+
     if (healthChange > 0) {
         Audio_PlaySfx(NA_SE_SY_HP_RECOVER);
-    } else if (gSaveContext.save.saveInfo.playerData.doubleDefense && (healthChange < 0)) {
+    }
+    else if (gSaveContext.save.saveInfo.playerData.doubleDefense && (healthChange < 0)) {
         healthChange >>= 1;
-    }
-
-    if (healthChange < 0) {
-        healthChange = healthChange * damageMultiplier;
-    }
-
-    gSaveContext.save.saveInfo.playerData.health += healthChange;
-
-    if (((void)0, gSaveContext.save.saveInfo.playerData.health) >
-        ((void)0, gSaveContext.save.saveInfo.playerData.healthCapacity)) {
-        gSaveContext.save.saveInfo.playerData.health = gSaveContext.save.saveInfo.playerData.healthCapacity;
     }
 
     if (healthChange < 0 && oneHitKo == CONFIG_ON) {
@@ -81,16 +72,24 @@ RECOMP_PATCH s32 Health_ChangeBy(PlayState* play, s16 healthChange) {
         return false;
     }
 
+    if (healthChange < 0) {
+        s16 extraDamage = healthChange * (damageMultiplier - 1);
+        gSaveContext.save.saveInfo.playerData.health += extraDamage;
+    }
+
+    if (((void)0, gSaveContext.save.saveInfo.playerData.health) >
+        ((void)0, gSaveContext.save.saveInfo.playerData.healthCapacity)) {
+        gSaveContext.save.saveInfo.playerData.health = gSaveContext.save.saveInfo.playerData.healthCapacity;
+    }
+
     if (gSaveContext.save.saveInfo.playerData.health <= 0) {
         gSaveContext.save.saveInfo.playerData.health = 0;
         if (loseRupees == CONFIG_ON) {
             gSaveContext.save.saveInfo.playerData.rupees = 0;
         }
         return false;
-    } else {
-        return true;
     }
-
+    return false;
 }
 
 u8 gItemIsHeart;
