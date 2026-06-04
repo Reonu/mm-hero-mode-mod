@@ -12,6 +12,8 @@ typedef struct EnElf EnElf;
 typedef void (*EnElfActionFunc)(struct EnElf*, PlayState*);
 typedef void (*EnElfUnkFunc)(struct EnElf*, PlayState*);
 
+s16 damageMultiplier;
+
 typedef struct EnElf {
     /* 0x000 */ Actor actor;
     /* 0x144 */ SkelAnime skelAnime;
@@ -246,4 +248,9 @@ RECOMP_HOOK_RETURN("EnBigslime_AttackPlayerInBigslime") void return_EnBigslime_A
             player->actor.parent = NULL;
             player->av2.actionVar2 = 100;
     }
+}
+
+// Export the damage multiplier for other mods (in case they wanted to use it)
+RECOMP_EXPORT s16 HM_damageMultiplier() {
+    return damageMultiplier;
 }
